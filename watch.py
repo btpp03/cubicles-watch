@@ -63,13 +63,15 @@ def tg(text):
 
 def main():
     data = fetch()
-    free = data.get("freePlan") or {}
+    raw_free = data.get("freePlan")
+    free = raw_free or {}
     plans = data.get("plans") or []
     free_ok = bool(free.get("available"))
     paid_ok = [p["id"] for p in plans if p.get("available")]
 
     st = load_state()
     prev = st.get("free_available")
+    removed = st.get("free_tier_removed", False)
     st["free_available"] = free_ok
     st["plans_available"] = paid_ok
     st["checked_at"] = int(time.time())
@@ -80,7 +82,16 @@ def main():
 
     log("free_available=%s reason=%s paid=%s" % (free_ok, reason, paid_ok))
 
-    if free_ok and prev is not True:
+    if raw_free is None and not removed:
+        tg(
+            "⚠️ <b>Cubicles 免费档已下架</b>\n"
+            "catalog 里 <code>freePlan</code> 从对象变成 null，首页 FAQ 也改成了"
+            "「免费 Standard 需绑卡并一次性收 $1」。\n"
+            "现在最低是 Starter $12/mo（2 vCPU·4 GB·32 GB）。\n"
+            "仓库：" + REPO_URL + "\n时间：" + bj() + "（北京时间）"
+        )
+        st["free_tier_removed"] = True
+    elif free_ok and prev is not True:
         msg = (
             "🟢 <b>Cubicles 免费机位放出来了</b>\n"
             "规格：Standard 4 vCPU / 8 GB / 64 GB NVMe（法兰克福，1 Gbps 不限流量）\n"
