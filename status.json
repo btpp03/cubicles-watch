@@ -1,9 +1,10 @@
 {
  "free_available": false,
  "plans_available": [
-  "starter"
+  "starter",
+  "standard"
  ],
- "checked_at": 1795178833,
+ "checked_at": 1795179134,
  "last_notify": 1795174634,
- "last_paid_note": "starter"
+ "last_paid_note": "starter,standard"
 }
