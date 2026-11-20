@@ -1,1 +1,10 @@
-{"free_available": null, "plans_available": []}
+{
+ "free_available": true,
+ "plans_available": [
+  "standard",
+  "pro"
+ ],
+ "checked_at": 1795171742,
+ "last_notify": 1795171744,
+ "last_paid_note": "standard,pro"
+}
