@@ -1,10 +1,7 @@
 {
- "free_available": true,
- "plans_available": [
-  "standard",
-  "pro"
- ],
- "checked_at": 1795171742,
+ "free_available": false,
+ "plans_available": [],
+ "checked_at": 1795172832,
  "last_notify": 1795171744,
- "last_paid_note": "standard,pro"
+ "last_paid_note": ""
 }
