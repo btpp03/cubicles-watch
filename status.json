@@ -3,10 +3,11 @@
  "plans_available": [
   "starter",
   "standard",
-  "pro"
+  "pro",
+  "studio"
  ],
- "checked_at": 1795697240,
+ "checked_at": 1795697535,
  "last_notify": 1795174634,
- "last_paid_note": "starter,standard,pro",
+ "last_paid_note": "starter,standard,pro,studio",
  "free_tier_removed": true
 }
